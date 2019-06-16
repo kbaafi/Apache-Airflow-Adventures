@@ -12,15 +12,22 @@ A dag that relies on AWS, s3 and Redshift hooks to copy json data from an S3 buc
 
 A parameterizable and reusable S3 to Redshift Plugin that can be used in any dag(without code copy)
 
-> Uses 2 user created plugins. One for S3 to Redshift data transfer and another for verifying that data copied into Redshift
+Uses 2 user created plugins. One for S3 to Redshift data transfer and another for verifying that data copied into Redshift
 
 ### Airflow: Subdag
 
-A subdag that performs three functions:
+The main dag does the following:
 
-* Optionally create a table in Redshift
-* Copy data from Redshift to S3
-* Verify if data was copied
+* Initialize tables in redshift
+* Copy data from S3 to redshift using the subdag
+* Load other tables by querying the staged data
 
-A failure in any of these tasks should cause the whole subdag to fail. (**To be added soon**)
+The subdag that performs three functions:
 
+* Optionally create a staging table in Redshift
+* Copy staging data from Redshift to S3
+* Verify if staging data was copied
+
+> The subdag uses the 2 plugins created in the previous exercise. The demonstrates how you could build very ETL solutions using Redshift
+
+A failure in any of these tasks should cause the whole subdag to fail.
