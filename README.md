@@ -10,7 +10,7 @@ A dag that relies on AWS, s3 and Redshift hooks to copy json data from an S3 buc
 
 ### Airflow: S3-to-Redshift-Plugin
 
-A parameterizable and reusable S3 to Redshift Plugin that can be used in any dag(without code copy)
+A parameterizable and reusable S3 to Redshift Plugin that can be used in any dag
 
 Uses 2 user created plugins. One for S3 to Redshift data transfer and another for verifying that data copied into Redshift
 
